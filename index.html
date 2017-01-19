@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>upload file and preview</title>
+</head>
+<style>
+	input{
+		display: block;
+		margin: 50px auto;
+	}
+	img{
+		display: block;
+		clear: both;
+		margin: 20px auto;
+	}
+</style>
+
+<body>
+    <input type="file" id="files" />
+    <img id="image" />
+    <script>
+    document.getElementById("files").onchange = function() {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("image").src = e.target.result;
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    }
+    </script>
+</body>
+
+</html>
